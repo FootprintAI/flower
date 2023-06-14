@@ -154,11 +154,11 @@ def start_client(
     event(EventType.START_CLIENT_ENTER)
 
     # Parse IP address
-    parsed_address = parse_address(server_address)
-    if not parsed_address:
-        sys.exit(f"Server address ({server_address}) cannot be parsed.")
-    host, port, is_v6 = parsed_address
-    address = f"[{host}]:{port}" if is_v6 else f"{host}:{port}"
+    #parsed_address = parse_address(server_address)
+    #if not parsed_address:
+    #    sys.exit(f"Server address ({server_address}) cannot be parsed.")
+    #host, port, is_v6 = parsed_address
+    #address = f"[{host}]:{port}" if is_v6 else f"{host}:{port}"
 
     # Set the default transport layer
     if transport is None:
@@ -188,7 +188,7 @@ def start_client(
     while True:
         sleep_duration: int = 0
         with connection(
-            address,
+            server_address,
             max_message_length=grpc_max_message_length,
             root_certificates=root_certificates,
         ) as conn:
